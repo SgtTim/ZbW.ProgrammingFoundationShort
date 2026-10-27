@@ -24,15 +24,40 @@ public partial class RabattKalkulatorForm : Form
   {
     // TODO 1: Betrag aus TxtBetrag lesen (decimal.TryParse), muss grösser als 0 sein
     //         Bei ungültiger Eingabe: MessageBox anzeigen und return
-
+    if (!decimal.TryParse(TxtBetrag.Text, out decimal betrag)){
+      MessageBox.Show("Ungültige Eingabe", "Error");
+      return;
+    }
+    if (betrag <= 0)
+    {
+      MessageBox.Show($"Eingegebener Wert: {betrag} muss grösser 0 sein.", "Error");
+      return;
+    }
     // TODO 2: Rabatt aus RadioButton ermitteln
     //         RadNormal = 0%, RadPremium = 10%, RadVip = 20%
-
+    decimal rabatt;
+    if (RadPremium.Checked)
+    {
+      rabatt = 10m;
+    }
+    else if (RadVip.Checked)
+    {
+      rabatt = 20m;
+    }
+    else
+    {
+      rabatt = 0m;
+    }
     // TODO 3: Wenn ChkLehrling.Checked → Rabatt += 5
-
+    if (ChkLehrling.Checked)
+    {
+      rabatt += 5m;
+    }
     // TODO 4: Rabatt in CHF und Endbetrag berechnen:
     //         rabattBetrag = betrag * rabatt / 100m;  endbetrag = betrag - rabattBetrag
-
+    decimal rabattBetrag = betrag * rabatt / 100m;
+    decimal endBetrag = betrag - rabattBetrag;
     // TODO 5: LblErgebnis.Text setzen: Originalbetrag, Rabatt in CHF (und %), Endbetrag
+    LblErgebnis.Text = $"Originalbetrag: {betrag}, Rabatt in CHF/%: {rabattBetrag}/{rabatt}, Endbetrag: {endBetrag}";
   }
 }
