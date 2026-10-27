@@ -30,19 +30,13 @@ public partial class WochentageAppForm : Form
     string selectedDay = CmbWochentag.Text;
     // TODO 3: switch expression → bool istWerktag
     //         ("Samstag" or "Sonntag" → false, sonst true)
-    bool isWorkday;
-    switch (selectedDay)
+    
+    bool isWorkday = selectedDay switch
     {
-      case "Sonntag":
-        isWorkday = false;
-        break;
-      case "Samstag":
-        isWorkday = false;
-        break;
-      default:
-        isWorkday = true;
-        break;
-    }
+      "Sonntag" => false,
+      "Samstag" => false,
+      _ => true
+    };
     // TODO 4: Ternären Operator → "Werktag" oder "Wochenende"
     //         string typ = istWerktag ? "Werktag" : "Wochenende";
     string dayType = isWorkday ? "Werktag" : "Wochenende";
