@@ -21,7 +21,8 @@ public partial class NotenrechnerForm : Form
   {
     InitializeComponent();
   }
-
+  const int MaxValue = 100;
+  const int MinValue = 0;
   private void CmdBerechnen_Click(object sender, EventArgs e)
   {
     // TODO 1: Punkte aus TxtPunkte lesen (int.TryParse)
@@ -32,7 +33,7 @@ public partial class NotenrechnerForm : Form
           return;
         }
 
-    if (punkte > 100 || punkte < 0)
+    if (punkte > MaxValue || punkte < MinValue)
     {
       MessageBox.Show("Ungültiger Zahlenbereich!!", "Error");
       return;
