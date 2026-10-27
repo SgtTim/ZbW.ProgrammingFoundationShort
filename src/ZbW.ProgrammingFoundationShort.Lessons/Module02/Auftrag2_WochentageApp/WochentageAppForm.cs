@@ -19,18 +19,34 @@ public partial class WochentageAppForm : Form
     InitializeComponent();
     // TODO 1: ComboBox-Items befüllen: "Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag","Sonntag"
     //         CmbWochentag.SelectedIndex = 0;
+    string[] weekDays = { "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag" };
+    CmbWochentag.Items.AddRange(weekDays);
+    CmbWochentag.SelectedIndex = 0;
   }
 
   private void CmdAnzeigen_Click(object sender, EventArgs e)
   {
     // TODO 2: Gewählten Tag aus CmbWochentag lesen (CmbWochentag.Text)
-
+    string selectedDay = CmbWochentag.Text;
     // TODO 3: switch expression → bool istWerktag
     //         ("Samstag" or "Sonntag" → false, sonst true)
-
+    bool isWorkday;
+    switch (selectedDay)
+    {
+      case "Sonntag":
+        isWorkday = false;
+        break;
+      case "Samstag":
+        isWorkday = false;
+        break;
+      default:
+        isWorkday = true;
+        break;
+    }
     // TODO 4: Ternären Operator → "Werktag" oder "Wochenende"
     //         string typ = istWerktag ? "Werktag" : "Wochenende";
-
+    string dayType = isWorkday ? "Werktag" : "Wochenende";
     // TODO 5: LblErgebnis.Text setzen
+    LblErgebnis.Text = $"{selectedDay} ist ein {dayType}";
   }
 }
