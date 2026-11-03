@@ -48,8 +48,9 @@ public static class PasswortValidator
       }
       else
       {
+        Console.WriteLine("Das Passwort ist ungültig weil:");
         if (!hatZiffer) { Console.WriteLine("Das Passwort hat keine Ziffer"); }
-        if (passwort.Length < 8) { Console.WriteLine($"Das Passwort ist zu kurz. Es hat nur: {passwort.Length} Zeichen"); }
+        if (passwort.Length < minPasswortLaenge) { Console.WriteLine($"Das Passwort ist zu kurz. Es hat nur: {passwort.Length} Zeichen"); }
       }
     } while (!gueltig);
 
