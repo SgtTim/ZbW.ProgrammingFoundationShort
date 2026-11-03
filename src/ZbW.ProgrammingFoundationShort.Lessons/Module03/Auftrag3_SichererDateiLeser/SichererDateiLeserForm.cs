@@ -42,14 +42,14 @@ public partial class SichererDateiLeserForm : Form
     //         MessageBox mit Datei-nicht-gefunden-Meldung
     catch (FileNotFoundException ex)
     {
-      MessageBox.Show($"Die angegebene Datei konnte nicht gefunden werden.\nFehlercode: {ex.Message}", "File not Found!!");
+      MessageBox.Show($"Die angegebene Datei konnte nicht gefunden werden.{Environment.NewLine}Fehlercode: {ex.Message}", "File not Found!!");
     }
 
     // TODO 4: catch (Exception ex):
     //         MessageBox mit allgemeiner Fehlermeldung
     catch (Exception ex)
     {
-      MessageBox.Show($"Ein allgemeiner Fehler ist aufgetreten.\nFehlercode: {ex.Message}", "Unerwarteter Fehler");
+      MessageBox.Show($"Ein allgemeiner Fehler ist aufgetreten.{Environment.NewLine}Fehlercode: {ex.Message}", "Unerwarteter Fehler");
     }
     // TODO 5: finally (läuft immer):
     //         CmdLesen.Enabled = true;
