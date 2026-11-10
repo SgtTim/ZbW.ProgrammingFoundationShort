@@ -13,11 +13,12 @@ namespace ZbW.ProgrammingFoundationShort.Lessons.Module04.Auftrag1_StatistikRech
 
 public static class StatistikRechner
 {
+  const int MaxNumberOfInputs = 5;
   public static void Start()
   {
     // TODO 1: int[5]-Array deklarieren
     //         5 Zahlen einlesen und im Array speichern
-    int[] numberInput = new int[5];
+    int[] numberInput = new int[MaxNumberOfInputs];
     for (int i = 0; i < numberInput.Length; i++)
     {
       Console.Write($"Enter Number {i + 1}: ");
